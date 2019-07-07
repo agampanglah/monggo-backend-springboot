@@ -1,11 +1,17 @@
 package com.example.demo.Service;
 
 import com.example.demo.Dao.UserDao;
+import com.example.demo.Entity.Transaction;
 import com.example.demo.Entity.User;
 import com.example.demo.Exception.UsernameAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -30,5 +36,61 @@ public class UserService {
         catch (Exception e) {
             throw new UsernameAlreadyExistException("username " + newUser.getUsername()+ " already exist ");
         }
+    }
+
+    // user crud!! this is for admin(user admin)
+
+    public List<User> getUserAll(){
+        return userDao.findAll();
+    }
+
+    public Optional<User> getUserId(Long user_id) {
+        if (userDao.existsById(user_id)) {
+
+            return userDao.findById(user_id);
+        }
+        else{
+            throw new ResourceNotFoundException("user  dengan " + user_id + "tidak ditemukan");
+        }
+
+    }
+
+    public User createUser(User user){
+        return userDao.save(user);
+    }
+
+    public User updateUserById(Long user_id, User userRequest){
+        if (!userDao.existsById(user_id)){
+            throw new ResourceNotFoundException("user dengan"  + user_id + "tidak ditemukan");
+        }
+
+        Optional<User> user = userDao.findById(user_id);
+
+        if (!(user.isPresent())){
+            throw new ResourceNotFoundException("user dengan"  + user_id + "tidak ditemukan");
+        }
+
+        User user1 = user.get();
+        user1.setId(userRequest.getId());
+        user1.setFullname(userRequest.getFullname());
+        user1.setUsername(userRequest.getUsername());
+        user1.setEmail(userRequest.getEmail());
+        user1.setAlamat(userRequest.getAlamat());
+        user1.setNo_identitas(userRequest.getAlamat());
+        user1.setGender(userRequest.getGender());
+        user1.setNo_telepon(userRequest.getNo_telepon());
+        user1.setPassword(userRequest.getPassword());
+
+
+        return userDao.save(user1);
+    }
+
+    public ResponseEntity<Object> deleteById(Long user_id){
+        if (!userDao.existsById(user_id)){
+            throw new ResourceNotFoundException("user dengan"  + user_id + "tidak ditemukan");
+        }
+
+        userDao.deleteById(user_id);
+        return ResponseEntity.ok().build();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Entity.Transaction;
 import com.example.demo.Entity.User;
 import com.example.demo.Login.LoginRequest;
 import com.example.demo.Login.LoginResponse;
@@ -9,18 +10,19 @@ import com.example.demo.Service.UserService;
 import com.example.demo.Validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.util.List;
+import java.util.Optional;
 
 import static com.example.demo.Security.SecurityConstant.TOKEN_PREFIX;
 
@@ -81,4 +83,32 @@ public class UserController {
             String jwt = TOKEN_PREFIX + jwtTokenProvider.generateToken(authentication);
             return ResponseEntity.ok(new LoginResponse(true, jwt));
         }
+
+        // user api crud
+
+    @RequestMapping(path = "/user", method = RequestMethod.GET)
+    public List<User> getUserAll(){
+        return userService.getUserAll();
+    }
+
+    @RequestMapping(path = "/user/{user_id}", method = RequestMethod.GET)
+    public Optional<User> getUserById(@PathVariable(value = "user_id") Long user_id){
+        return userService.getUserId(user_id);
+    }
+
+    @RequestMapping(path = "/user", method = RequestMethod.POST)
+    public User createUser(@RequestBody User user){
+        return userService.createUser(user);
+    }
+
+    @RequestMapping(path = "/user/{user_id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public User updateUserById(@PathVariable(value = "user_id") Long user_id, @RequestBody User user){
+        return userService.updateUserById(user_id, user);
+    }
+
+    @RequestMapping(path = "/user/{user_id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> deleteUserById(@PathVariable(value = "user_id") Long user_id){
+        return userService.deleteById(user_id);
+    }
+
 }

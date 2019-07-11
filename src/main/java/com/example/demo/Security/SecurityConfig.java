@@ -15,6 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import static com.example.demo.Security.SecurityConstant.SIGN_UP_URL;
 
@@ -25,6 +27,7 @@ import static com.example.demo.Security.SecurityConstant.SIGN_UP_URL;
         jsr250Enabled = true,
         prePostEnabled = true
 )
+
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
@@ -73,11 +76,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.svg",
                         "/**/*.html",
                         "/**/*.css",
-                        "/**/*.js"
+                        "/**/*.js",
+                        "*/swagger-ui/.html"
                 ).permitAll()
                 //.antMatchers("/api/users/**").permitAll()
-                .antMatchers(SIGN_UP_URL).permitAll()
-                .anyRequest().authenticated();
+                .antMatchers(SIGN_UP_URL).permitAll();
+                //.anyRequest().authenticated();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
 

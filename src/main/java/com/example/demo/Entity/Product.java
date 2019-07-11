@@ -18,6 +18,9 @@ public class Product implements Serializable {
     @NotBlank(message = "please input column")
     private String nama_product;
 
+
+    private  String foto ;
+
     private int price;
 
     @OneToMany(mappedBy = "product")
@@ -58,5 +61,13 @@ public class Product implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

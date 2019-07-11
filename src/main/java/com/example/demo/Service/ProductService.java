@@ -52,6 +52,7 @@ public class ProductService {
         product1.setNama_product(productRequest.getNama_product());
         product1.setProduct_id(productRequest.getProduct_id());
         product1.setPrice(productRequest.getPrice());
+        product1.setFoto(productRequest.getFoto());
         return productDao.save(product1);
     }
 

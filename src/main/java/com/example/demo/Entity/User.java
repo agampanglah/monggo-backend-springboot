@@ -46,6 +46,20 @@ public class User implements UserDetails {
     @OneToMany( mappedBy = "user")
     Set<Transaction> transactionEntities = new HashSet<>();
 
+    //features roles...............................
+
+    @ManyToMany (fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    // granted authories for list all authories user roles
+//
+//    private Collection<?extends GrantedAuthority> authorities;
+
+    //..................................................
+
     @Transient
     private String confirmPassword;
     private Date createdAt;
@@ -54,7 +68,21 @@ public class User implements UserDetails {
     public User() {
     }
 
+    // features roless...............
 
+
+    public User(String fullname, @NotBlank(message = "please input column") String username, @Email @NotBlank(message = "please input column") String email, String password, String confirmPassword, Collection<GrantedAuthority> authorities) {
+        this.fullname = fullname;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+
+        // feature get authories
+//        this.authorities = authorities;
+    }
+
+    //..................................
 
     public Long getId() {
         return id;
@@ -152,6 +180,7 @@ public class User implements UserDetails {
         this.confirmPassword = confirmPassword;
     }
 
+
     @PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
@@ -165,7 +194,12 @@ public class User implements UserDetails {
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        //loggere hilangkan comment di null
         return null;
+
+
+
     }
 
     @Override
@@ -191,4 +225,17 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    // features roles.....................................
+
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    //.......................................
 }

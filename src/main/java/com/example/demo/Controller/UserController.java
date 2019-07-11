@@ -1,7 +1,11 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Dao.RoleDao;
+import com.example.demo.Entity.Role;
+import com.example.demo.Entity.RoleName;
 import com.example.demo.Entity.Transaction;
 import com.example.demo.Entity.User;
+import com.example.demo.Exception.ResourceNotFoundException;
 import com.example.demo.Login.LoginRequest;
 import com.example.demo.Login.LoginResponse;
 import com.example.demo.Security.JwtTokenProvider;
@@ -16,8 +20,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
@@ -26,12 +32,14 @@ import java.util.Optional;
 
 import static com.example.demo.Security.SecurityConstant.TOKEN_PREFIX;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/api/users")
 public class UserController {
 
 
-
+        @Autowired
+        private PasswordEncoder passwordEncoder;
 
         @Autowired
         private MapValidationService mapValidationService;
@@ -41,6 +49,10 @@ public class UserController {
 
         @Autowired
         private JwtTokenProvider jwtTokenProvider;
+
+        // roles feature, just in case if err, just remove this shit
+        @Autowired
+        private RoleDao roleDao;
 
         @Autowired
         private AuthenticationManager authenticationManager;
@@ -59,10 +71,18 @@ public class UserController {
                 return errorMap;
 
 
+//
+//            User newUser = userService.saveUser(user);
+//            user.setPassword(passwordEncoder.encode(user.getPassword()));
+//
+//            Role userRole = roleDao.findByName(RoleName.ROLE_ADMIN).orElseThrow(()->new Ece);
 
-            User newUser = userService.saveUser(user);
+            // just in case if err again just remove this comment lowwer side this comment
+            // and just fucking delete code in upper this coomment
 
-            return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
+          User newUser = userService.saveUser(user);
+
+           return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
         }
 
         @PostMapping(path = "/login")

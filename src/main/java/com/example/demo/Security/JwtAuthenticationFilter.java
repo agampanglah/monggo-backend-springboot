@@ -35,7 +35,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 User userDetails = customUserDetailService.loadUserById(userId);
             }
         } catch (Exception ex) {
-            logger.error("couldn't nt set user, ", ex);
+            logger.error("couldn't  set user, ", ex);
         }
 
         filterChain.doFilter(httpServletRequest, httpServletResponse);

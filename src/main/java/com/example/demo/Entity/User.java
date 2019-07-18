@@ -42,6 +42,8 @@ public class User implements UserDetails {
     private String no_telepon;
     private String gender;
     private String password;
+    private String foto;
+
 
     @OneToMany( mappedBy = "user")
     Set<Transaction> transactionEntities = new HashSet<>();
@@ -180,6 +182,13 @@ public class User implements UserDetails {
         this.confirmPassword = confirmPassword;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
     @PrePersist
     protected void onCreate(){

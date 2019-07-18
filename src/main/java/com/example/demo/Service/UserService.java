@@ -80,6 +80,7 @@ public class UserService {
         user1.setGender(userRequest.getGender());
         user1.setNo_telepon(userRequest.getNo_telepon());
         user1.setPassword(userRequest.getPassword());
+        user1.setFoto(userRequest.getFoto());
 
 
         return userDao.save(user1);

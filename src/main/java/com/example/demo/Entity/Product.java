@@ -21,7 +21,7 @@ public class Product implements Serializable {
 
     private  String foto ;
 
-    private int price;
+    private String price;
 
     @OneToMany(mappedBy = "product")
     Set<Transaction> transactionEntities  = new HashSet<>();
@@ -34,7 +34,7 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(@NotBlank(message = "please input column") String nama_product, int price) {
+    public Product(@NotBlank(message = "please input column") String nama_product, String price) {
         this.nama_product = nama_product;
         this.price = price;
     }
@@ -55,11 +55,11 @@ public class Product implements Serializable {
         this.nama_product = nama_product;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

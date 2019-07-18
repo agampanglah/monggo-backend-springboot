@@ -65,4 +65,8 @@ public class WilayahService {
         wilayahDao.deleteById(wilayah_id);
         return ResponseEntity.ok().build();
     }
+
+//    public ResponseEntity<Object> getProductByIdWilayah(Long produc){
+//        if ((wilayah_id.equals()))
+//    }
 }

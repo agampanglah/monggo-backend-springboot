@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 
 import com.example.demo.Entity.Bank;
+import com.example.demo.Entity.Product;
 import com.example.demo.Entity.Wilayah;
 import com.example.demo.Service.BankService;
 import com.example.demo.Service.WilayahService;
@@ -46,4 +47,10 @@ public class WilayahController {
     public ResponseEntity<Object> deleteWilayahById(@PathVariable(value = "wilayah_id") Long wilayah_id){
         return wilayahService.deleteById(wilayah_id);
     }
+
+//    @RequestMapping(path = "/productByWilayah", method = RequestMethod.GET)
+//    public ResponseEntity<Product> getProductByWilayah(@PathVariable(value = "wilayah_id") Long wilayah_id){
+//        return wilayahService.getWilayahProductById(wilayah_id)
+//    }
+
 }

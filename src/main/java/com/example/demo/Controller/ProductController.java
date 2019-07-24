@@ -28,7 +28,7 @@ public class ProductController {
     }
 
     @RequestMapping(path = "/product/{product_id}", method = RequestMethod.GET)
-    public Optional<Product> getBankById(@PathVariable(value = "product_id") Long product_id){
+    public Optional<Product> getProductById(@PathVariable(value = "product_id") Long product_id){
         return productService.getProductById(product_id);
     }
 

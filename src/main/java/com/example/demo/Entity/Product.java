@@ -23,6 +23,8 @@ public class Product implements Serializable {
 
     private String price;
 
+    private String lot;
+
     @OneToMany(mappedBy = "product")
     Set<Transaction> transactionEntities  = new HashSet<>();
 
@@ -34,9 +36,12 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(@NotBlank(message = "please input column") String nama_product, String price) {
+    public Product(@NotBlank(message = "please input column") String nama_product, String price, String foto, String lot)
+    {
         this.nama_product = nama_product;
         this.price = price;
+        this.foto = foto;
+        this.lot = lot;
     }
 
     public Long getProduct_id() {
@@ -69,5 +74,13 @@ public class Product implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getLot() {
+        return lot;
+    }
+
+    public void setLot(String lot) {
+        this.lot = lot;
     }
 }

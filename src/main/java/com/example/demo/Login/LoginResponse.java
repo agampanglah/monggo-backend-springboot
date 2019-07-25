@@ -3,19 +3,22 @@ package com.example.demo.Login;
 import com.example.demo.Entity.User;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Objects;
+
 public class LoginResponse {
 
     private boolean success;
     private String token;
-    private Long userId;
+    private Object user;
 
 
 
 
-    public LoginResponse(boolean success, String token) {
+    public LoginResponse(boolean success, String token, Objects user) {
         this.success = success;
         this.token = token;
-        this.userId= userId;
+        this.user = user;
+
 
 
 
@@ -37,12 +40,12 @@ public class LoginResponse {
         this.token = token;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Object getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(Object user) {
+        this.user = user;
     }
 
     @Override
@@ -50,7 +53,7 @@ public class LoginResponse {
         return "LoginResponse{" +
                 "success=" + success +
                 ", token='" + token + '\'' +
-                ", userId=" + userId +
+                ", user=" + user +
                 '}';
     }
 }

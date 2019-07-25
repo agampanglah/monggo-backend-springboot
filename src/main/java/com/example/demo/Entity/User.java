@@ -72,12 +72,7 @@ public class User implements UserDetails {
     // features roless...............
 
 
-//    public User(String fullname, @NotBlank(message = "please input column") String username, @Email @NotBlank(message = "please input column") String email, String password, String confirmPassword, Collection<GrantedAuthority> authorities) {
-//        this.fullname = fullname;
-//        this.username = username;
-//        this.email = email;
-//        this.password = password;
-//        this.confirmPassword = confirmPassword;
+
 
         // feature get authories
 //        this.authorities = authorities;

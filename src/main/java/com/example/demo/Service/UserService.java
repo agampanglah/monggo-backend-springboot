@@ -71,7 +71,7 @@ public class UserService {
         }
 
         User user1 = user.get();
-        user1.setId(userRequest.getId());
+        user1.setUser_id(userRequest.getUser_id());
         user1.setFullname(userRequest.getFullname());
         user1.setUsername(userRequest.getUsername());
         user1.setEmail(userRequest.getEmail());

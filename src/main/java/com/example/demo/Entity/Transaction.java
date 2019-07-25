@@ -13,14 +13,14 @@ public class Transaction implements Serializable {
     @Id
     private Long transaction_id;
 
-    private int jumlah_transaksi;
+    private Integer jumlah_transaksi;
     private String nama_bank_pengirim;
-    private int no_rek_pengirim;
+    private String no_rek_pengirim;
     private String status;
     private Date tanggal_invoice;
     private String status_bukti_pembayaran;
     private Date tanggal_pembayaran;
-    private String jumlah_lot;
+    private Integer jumlah_lot;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -50,7 +50,7 @@ public class Transaction implements Serializable {
         return jumlah_transaksi;
     }
 
-    public void setJumlah_transaksi(int jumlah_transaksi) {
+    public void setJumlah_transaksi(Integer jumlah_transaksi) {
         this.jumlah_transaksi = jumlah_transaksi;
     }
 
@@ -62,11 +62,9 @@ public class Transaction implements Serializable {
         this.nama_bank_pengirim = nama_bank_pengirim;
     }
 
-    public int getNo_rek_pengirim() {
-        return no_rek_pengirim;
-    }
+    public String getNo_rek_pengirim() {return no_rek_pengirim; }
 
-    public void setNo_rek_pengirim(int no_rek_pengirim) {
+    public void setNo_rek_pengirim(String no_rek_pengirim) {
         this.no_rek_pengirim = no_rek_pengirim;
     }
 
@@ -102,11 +100,11 @@ public class Transaction implements Serializable {
         this.tanggal_pembayaran = tanggal_pembayaran;
     }
 
-    public String getJumlah_lot() {
+    public Integer getJumlah_lot() {
         return jumlah_lot;
     }
 
-    public void setJumlah_lot(String jumlah_lot) {
+    public void setJumlah_lot(Integer jumlah_lot) {
         this.jumlah_lot = jumlah_lot;
     }
 }

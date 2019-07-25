@@ -21,7 +21,7 @@ public class User implements UserDetails {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long user_id;
+    private Long id;
 
 
     @NotBlank(message = "please input column")
@@ -85,13 +85,12 @@ public class User implements UserDetails {
 
     //..................................
 
-
-    public Long getUser_id() {
-        return user_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNo_identitas() {
@@ -247,27 +246,4 @@ public class User implements UserDetails {
     }
 
     //.......................................
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id=" + user_id +
-                ", no_identitas='" + no_identitas + '\'' +
-                ", fullname='" + fullname + '\'' +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", alamat='" + alamat + '\'' +
-                ", no_telepon='" + no_telepon + '\'' +
-                ", gender='" + gender + '\'' +
-                ", password='" + password + '\'' +
-                ", foto='" + foto + '\'' +
-                ", transactionEntities=" + transactionEntities +
-                ", roles=" + roles +
-                ", confirmPassword='" + confirmPassword + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
-    }
 }
-

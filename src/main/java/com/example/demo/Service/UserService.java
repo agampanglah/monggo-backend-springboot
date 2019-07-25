@@ -44,13 +44,13 @@ public class UserService {
         return userDao.findAll();
     }
 
-    public Optional<User> getUserId(Long user_id) {
-        if (userDao.existsById(user_id)) {
+    public Optional<User> getUserId(Long id) {
+        if (userDao.existsById(id)) {
 
-            return userDao.findById(user_id);
+            return userDao.findById(id);
         }
         else{
-            throw new ResourceNotFoundException("user  dengan " + user_id + "tidak ditemukan");
+            throw new ResourceNotFoundException("user  dengan " + id + "tidak ditemukan");
         }
 
     }
@@ -59,19 +59,19 @@ public class UserService {
         return userDao.save(user);
     }
 
-    public User updateUserById(Long user_id, User userRequest){
-        if (!userDao.existsById(user_id)){
-            throw new ResourceNotFoundException("user dengan"  + user_id + "tidak ditemukan");
+    public User updateUserById(Long id, User userRequest){
+        if (!userDao.existsById(id)){
+            throw new ResourceNotFoundException("user dengan"  + id + "tidak ditemukan");
         }
 
-        Optional<User> user = userDao.findById(user_id);
+        Optional<User> user = userDao.findById(id);
 
         if (!(user.isPresent())){
-            throw new ResourceNotFoundException("user dengan"  + user_id + "tidak ditemukan");
+            throw new ResourceNotFoundException("user dengan"  + id + "tidak ditemukan");
         }
 
         User user1 = user.get();
-        user1.setUser_id(userRequest.getUser_id());
+        user1.setId(userRequest.getId());
         user1.setFullname(userRequest.getFullname());
         user1.setUsername(userRequest.getUsername());
         user1.setEmail(userRequest.getEmail());

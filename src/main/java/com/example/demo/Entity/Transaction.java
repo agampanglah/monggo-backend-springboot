@@ -20,6 +20,7 @@ public class Transaction implements Serializable {
     private String bukti_pembayaran;
     private Date tanggal_pembayaran;
     private Integer jumlah_lot;
+    private Integer jumlah_harga;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -70,8 +71,21 @@ public class Transaction implements Serializable {
     }
 
 
+    public String getBukti_pembayaran() {
+        return bukti_pembayaran;
+    }
 
+    public void setBukti_pembayaran(String bukti_pembayaran) {
+        this.bukti_pembayaran = bukti_pembayaran;
+    }
 
+    public Integer getJumlah_harga() {
+        return jumlah_harga;
+    }
+
+    public void setJumlah_harga(Integer jumlah_harga) {
+        this.jumlah_harga = jumlah_harga;
+    }
 
     public Date getTanggal_pembayaran() {
         return tanggal_pembayaran;

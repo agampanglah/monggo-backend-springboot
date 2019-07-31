@@ -57,6 +57,8 @@ public class TransactionService {
         transaction1.setStatus(transactionRequest.getStatus());
         transaction1.setTanggal_pembayaran(transactionRequest.getTanggal_pembayaran());
         transaction1.setTransaction_id(transactionRequest.getTransaction_id());
+        transaction1.setJumlah_harga(transactionRequest.getJumlah_harga());
+        transaction1.setBukti_pembayaran(transactionRequest.getBukti_pembayaran());
 
 
         return trasanctionDao.save(transaction1);

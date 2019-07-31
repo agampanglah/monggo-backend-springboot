@@ -52,12 +52,9 @@ public class TransactionService {
 
         Transaction transaction1 = transaction.get();
         transaction1.setJumlah_lot(transactionRequest.getJumlah_lot());
-        transaction1.setJumlah_transaksi(transactionRequest.getJumlah_transaksi());
         transaction1.setNama_bank_pengirim(transactionRequest.getNama_bank_pengirim());
         transaction1.setNo_rek_pengirim(transactionRequest.getNo_rek_pengirim());
         transaction1.setStatus(transactionRequest.getStatus());
-        transaction1.setStatus_bukti_pembayaran(transactionRequest.getStatus_bukti_pembayaran());
-        transaction1.setTanggal_invoice(transactionRequest.getTanggal_invoice());
         transaction1.setTanggal_pembayaran(transactionRequest.getTanggal_pembayaran());
         transaction1.setTransaction_id(transactionRequest.getTransaction_id());
 

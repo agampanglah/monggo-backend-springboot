@@ -13,12 +13,11 @@ public class Transaction implements Serializable {
     @Id
     private Long transaction_id;
 
-    private String jumlah_transaksi;
+
     private String nama_bank_pengirim;
     private String no_rek_pengirim;
     private String status;
-    private Date tanggal_invoice;
-    private String status_bukti_pembayaran;
+    private String bukti_pembayaran;
     private Date tanggal_pembayaran;
     private Integer jumlah_lot;
 
@@ -46,13 +45,7 @@ public class Transaction implements Serializable {
         this.transaction_id = transaction_id;
     }
 
-    public String getJumlah_transaksi() {
-        return jumlah_transaksi;
-    }
 
-    public void setJumlah_transaksi(String jumlah_transaksi) {
-        this.jumlah_transaksi = jumlah_transaksi;
-    }
 
     public String getNama_bank_pengirim() {
         return nama_bank_pengirim;
@@ -76,21 +69,9 @@ public class Transaction implements Serializable {
         this.status = status;
     }
 
-    public Date getTanggal_invoice() {
-        return tanggal_invoice;
-    }
 
-    public void setTanggal_invoice(Date tanggal_invoice) {
-        this.tanggal_invoice = tanggal_invoice;
-    }
 
-    public String getStatus_bukti_pembayaran() {
-        return status_bukti_pembayaran;
-    }
 
-    public void setStatus_bukti_pembayaran(String status_bukti_pembayaran) {
-        this.status_bukti_pembayaran = status_bukti_pembayaran;
-    }
 
     public Date getTanggal_pembayaran() {
         return tanggal_pembayaran;

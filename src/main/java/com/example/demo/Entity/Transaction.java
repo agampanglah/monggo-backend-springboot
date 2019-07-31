@@ -18,7 +18,7 @@ public class Transaction implements Serializable {
     private String no_rek_pengirim;
     private String status;
     private String bukti_pembayaran;
-    private Date tanggal_pembayaran;
+    private String tanggal_pembayaran;
     private Integer jumlah_lot;
     private Integer jumlah_harga;
 
@@ -87,11 +87,11 @@ public class Transaction implements Serializable {
         this.jumlah_harga = jumlah_harga;
     }
 
-    public Date getTanggal_pembayaran() {
+    public String getTanggal_pembayaran() {
         return tanggal_pembayaran;
     }
 
-    public void setTanggal_pembayaran(Date tanggal_pembayaran) {
+    public void setTanggal_pembayaran(String tanggal_pembayaran) {
         this.tanggal_pembayaran = tanggal_pembayaran;
     }
 

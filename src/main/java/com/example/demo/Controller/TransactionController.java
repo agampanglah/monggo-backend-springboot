@@ -26,7 +26,7 @@ public class TransactionController {
     }
 
     @RequestMapping(path = "/transaction/{transaction_id}", method = RequestMethod.GET)
-    public Optional<Transaction> getBankById(@PathVariable(value = "transaction_id") Long transaction_id){
+    public Optional<Transaction> getTransactionById(@PathVariable(value = "transaction_id") Long transaction_id){
         return transactionService.getTransactionId(transaction_id);
     }
 

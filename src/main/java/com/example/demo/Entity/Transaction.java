@@ -13,7 +13,7 @@ public class Transaction implements Serializable {
     @Id
     private Long transaction_id;
 
-    private Integer jumlah_transaksi;
+    private String jumlah_transaksi;
     private String nama_bank_pengirim;
     private String no_rek_pengirim;
     private String status;
@@ -46,11 +46,11 @@ public class Transaction implements Serializable {
         this.transaction_id = transaction_id;
     }
 
-    public int getJumlah_transaksi() {
+    public String getJumlah_transaksi() {
         return jumlah_transaksi;
     }
 
-    public void setJumlah_transaksi(Integer jumlah_transaksi) {
+    public void setJumlah_transaksi(String jumlah_transaksi) {
         this.jumlah_transaksi = jumlah_transaksi;
     }
 

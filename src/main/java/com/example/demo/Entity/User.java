@@ -42,6 +42,7 @@ public class User implements UserDetails {
     private String gender;
     private String password;
     private String foto;
+    private String role;
 
 
     @OneToMany( mappedBy = "user")
@@ -182,6 +183,14 @@ public class User implements UserDetails {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @PrePersist
